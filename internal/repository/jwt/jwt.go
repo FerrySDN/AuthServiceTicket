@@ -20,9 +20,10 @@ func NewJWTService() ports.TokenService {
 	return &jwtService{secret: []byte(sec)}
 }
 
-func (j *jwtService) Generate(username string) (string, error) {
+func (j *jwtService) Generate(username string,UserId int64) (string, error) {
 	claims := jwt.MapClaims{
 		"sub": username,
+		"user_id":UserId,
 		"exp": time.Now().Add(24 * time.Hour).Unix(),
 		"iat": time.Now().Unix(),
 	}

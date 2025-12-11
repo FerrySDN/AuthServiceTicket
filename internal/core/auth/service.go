@@ -41,5 +41,5 @@ func (s *Service) Login(username, password string) (string, error) {
 		return "", ErrInvalidCredentials
 	}
 
-	return s.Token.Generate(u.Username)
+	return s.Token.Generate(u.Username, u.ID)
 }
